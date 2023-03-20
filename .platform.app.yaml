@@ -8,7 +8,11 @@ name: test_platform_sh
 # in multiple versions. Check the PHP documentation
 # (https://docs.platform.sh/languages/php.html#supported-versions)
 # to find the supported versions for the 'php' type.
-type: 'php:8.2'
+type: php:8.2
+
+variables:
+  env:
+    APP_ENV: prod
 
 # The following block defines a single writable directory, 'web/uploads'
 # The 'source' specifies where the writable mount is. The 'local' source
@@ -31,18 +35,25 @@ disk: 2048
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form '<service name>:<endpoint name>'.
 relationships:
-  postgresdatabase: 'dbpostgres:postgresql'
+  database: 'postgresql:postgresql'
 
 hooks:
   build: |
     set -e
   deploy: |
     set -e
+    php bin/console d:s:u --force
+    php bin/console d:f:l -q
     chown -R web:web /app/var/cache
     chown -R web:web /app/var/log
     chmod 777 -R /app/var/log
     chmod 777 -R /app/var/cache
-    php bin/console ca:cl 
+    php bin/console ca:cl
+    
+
+runtime:
+  extensions:
+    - pdo_pgsql
 
 web:
   locations:
