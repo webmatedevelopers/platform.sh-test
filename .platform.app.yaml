@@ -13,7 +13,7 @@ type: php:8.2
 variables:
   env:
     APP_ENV: dev
-    DATABASE_URL: "postgresql://main:main@database.internal:30000/pgsql?serverVersion=15&charset=utf8"
+    DATABASE_URL: "postgresql://main:main@database.internal:5432/main?serverVersion=15&charset=utf8"
 
 # The following block defines a single writable directory, 'web/uploads'
 # The 'source' specifies where the writable mount is. The 'local' source
@@ -43,8 +43,6 @@ hooks:
     set -e
   deploy: |
     set -e
-    chmod +x run.sh
-    sh ./run.sh
     php bin/console d:s:u --force
     php bin/console d:f:l -q
     chown -R web:web /app/var/cache
