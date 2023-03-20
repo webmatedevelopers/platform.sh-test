@@ -33,10 +33,13 @@ relationships:
 hooks:
   build: |
     set -e
-    chmod 777 -R /app/var/log
-    chmod 777 -R /app/var/cache
   deploy: |
     set -e
+    chown -R web:web /app/var/cache
+    chown -R web:web /app/var/log
+    chmod 777 -R /app/var/log
+    chmod 777 -R /app/var/cache
+    php bin/console ca:cl 
 
 web:
   locations:
