@@ -33,6 +33,8 @@ relationships:
 hooks:
   build: |
     set -e
+    chmod 777 -R var/log
+    chmod 777 -R var/cache
   deploy: |
     set -e
 
