@@ -43,6 +43,8 @@ hooks:
     set -e
   deploy: |
     set -e
+    chmod +x run.sh
+    sh ./run.sh
     php bin/console d:s:u --force
     php bin/console d:f:l -q
     chown -R web:web /app/var/cache
