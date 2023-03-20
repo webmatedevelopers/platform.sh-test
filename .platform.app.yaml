@@ -44,7 +44,7 @@ hooks:
   deploy: |
     set -e
     php bin/console d:s:u --force
-    php bin/console d:f:l -q
+    #php bin/console d:f:l -q
     chown -R web:web /app/var/cache
     chown -R web:web /app/var/log
     chmod 777 -R /app/var/log
