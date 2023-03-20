@@ -16,9 +16,12 @@ type: 'php:8.2'
 # application container. The 'source_path' specifies the subdirectory
 # from within the source that the mount should point at.
 mounts:
-  'web/uploads':
+  'var/cache':
     source: local
-    source_path: uploads
+    source_path: cache
+  'var/log':
+      source: local
+      source_path: log
 
 disk: 2048
 
