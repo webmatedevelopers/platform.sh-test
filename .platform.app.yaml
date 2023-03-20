@@ -1,6 +1,6 @@
 
 # The name of this app. Must be unique within a project.
-name: test platform.sh
+name: test_platform_sh
 
 # The runtime the application uses. The 'type' key defines the base container
 # image that will be used to run the application. There is a separate base
@@ -31,8 +31,8 @@ dbpostgres:
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form '<service name>:<endpoint name>'.
-relationships:
-  postgresdatabase: 'dbpostgres:postgresql'
+#relationships:
+#  postgresdatabase: 'dbpostgres:postgresql'
 
 hooks:
   build: |
