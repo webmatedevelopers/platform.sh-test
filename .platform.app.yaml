@@ -61,3 +61,9 @@ web:
     '/':
       root: "public"
       passthru: "/index.php"
+      headers:
+        X-Frame-Options: sameorigin
+        Content-Security-Policy: script-src 'self'
+        X-Content-Type-Options: nosniff
+        Referrer-Policy: no-referrer
+        X-XSS-Protection: 1; mode=block
